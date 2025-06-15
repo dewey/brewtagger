@@ -14,22 +14,17 @@ jobs:
         with:
           homebrew_owner: dewey
           homebrew_tap: brewtagger
-
+          formula_folder: Formula
           github_token: ${{ secrets.HOMEBREW_TAP_GITHUB_TOKEN }}
-
           commit_owner: github-actions
           commit_email: github-actions@github.com
-
           install: |
             system "go", "build", "-o", "brewtagger"
             bin.install "brewtagger"
             prefix.install "com.github.dewey.brewtagger.plist"
-
           test: 'assert_match("brewtagger version", shell_output("brewtagger --version"))'
-
           depends_on: |
             "go" => :build
             "tag"
-
           debug: false
           skip_commit: false 

@@ -13,7 +13,7 @@ jobs:
         uses: Justintime50/homebrew-releaser@v2
         with:
           homebrew_owner: dewey
-          homebrew_tap: brewtagger
+          homebrew_tap: homebrew-formulas
           formula_folder: Formula
           github_token: ${{ secrets.HOMEBREW_TAP_GITHUB_TOKEN }}
           commit_owner: github-actions
@@ -26,5 +26,6 @@ jobs:
           depends_on: |
             "go" => :build
             "tag"
-          debug: false
-          skip_commit: false 
+          debug: true
+          skip_commit: false
+          update_readme_table: true 

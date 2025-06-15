@@ -3,19 +3,19 @@
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>com.github.dewey.apptagger</string>
+    <string>com.github.dewey.brewtagger</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/path/to/apptagger</string>
+        <string>/Users/philipp/Projects/repos/github.com/dewey/brewtagger/brewtagger</string>
     </array>
     <key>RunAtLoad</key>
     <true/>
     <key>StartInterval</key>
     <integer>21600</integer>
     <key>StandardErrorPath</key>
-    <string>/var/log/apptagger.err</string>
+    <string>~/Library/Logs/brewtagger.err</string>
     <key>StandardOutPath</key>
-    <string>/var/log/apptagger.out</string>
+    <string>~/Library/Logs/brewtagger.out</string>
     <key>WatchPaths</key>
     <array>
         <string>/Applications</string>

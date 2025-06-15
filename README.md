@@ -1,4 +1,4 @@
-# AppTagger
+# BrewTagger
 
 A simple tool that automatically tags Homebrew Cask applications in your `/Applications` folder. It uses the `tag` command-line tool to add color tags to your applications, making it easy to visually distinguish between different types of apps.
 
@@ -17,21 +17,21 @@ brew install tag
 
 2. Build the tool:
 ```bash
-go build -o apptagger
+go build -o brewtagger
 ```
 
 3. Move the binary to a suitable location:
 ```bash
-sudo mv apptagger /usr/local/bin/
+sudo mv brewtagger /usr/local/bin/
 ```
 
 ## Usage
 
 Run the tool manually:
 ```bash
-apptagger                    # Tag apps with default color (Yellow)
-apptagger -tag-color=Blue    # Tag apps with Blue color
-apptagger -tag-color=Red     # Tag apps with Red color
+brewtagger                    # Tag apps with default color (Yellow)
+brewtagger -tag-color=Blue    # Tag apps with Blue color
+brewtagger -tag-color=Red     # Tag apps with Red color
 ```
 
 ### Available Colors
@@ -51,18 +51,18 @@ To automatically tag apps when they're installed or when you log in, you can use
 
 1. Create the launchd plist file:
 ```bash
-sudo mkdir -p /Library/LaunchDaemons
-sudo cp com.github.dewey.apptagger.plist /Library/LaunchDaemons/
+mkdir -p ~/Library/LaunchAgents
+cp com.github.dewey.brewtagger.plist ~/Library/LaunchAgents/
 ```
 
 2. Edit the plist file to point to your binary location:
 ```bash
-sudo sed -i '' "s|/path/to/apptagger|/usr/local/bin/apptagger|g" /Library/LaunchDaemons/com.github.dewey.apptagger.plist
+sed -i '' "s|/path/to/brewtagger|/usr/local/bin/brewtagger|g" ~/Library/LaunchAgents/com.github.dewey.brewtagger.plist
 ```
 
 3. Load the launchd job:
 ```bash
-sudo launchctl load /Library/LaunchDaemons/com.github.dewey.apptagger.plist
+launchctl load ~/Library/LaunchAgents/com.github.dewey.brewtagger.plist
 ```
 
 The tool will now run:
@@ -74,13 +74,13 @@ The tool will now run:
 
 1. Unload the launchd job:
 ```bash
-sudo launchctl unload /Library/LaunchDaemons/com.github.dewey.apptagger.plist
+launchctl unload ~/Library/LaunchAgents/com.github.dewey.brewtagger.plist
 ```
 
 2. Remove the files:
 ```bash
-sudo rm /Library/LaunchDaemons/com.github.dewey.apptagger.plist
-sudo rm /usr/local/bin/apptagger
+rm ~/Library/LaunchAgents/com.github.dewey.brewtagger.plist
+sudo rm /usr/local/bin/brewtagger
 ```
 
 ## License

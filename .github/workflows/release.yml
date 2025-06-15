@@ -17,7 +17,7 @@ jobs:
           homebrew_tap: brewtagger
 
           # The Personal Access Token with repo permissions
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.HOMEBREW_TAP_GITHUB_TOKEN }}
 
           # Git author info
           commit_owner: github-actions

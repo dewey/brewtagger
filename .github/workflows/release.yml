@@ -1,0 +1,42 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  homebrew-releaser:
+    runs-on: ubuntu-latest
+    name: homebrew-releaser
+    steps:
+      - name: Release project to Homebrew
+        uses: Justintime50/homebrew-releaser@v2
+        with:
+          # Use the same repository
+          homebrew_owner: dewey
+          homebrew_tap: brewtagger
+
+          # The Personal Access Token with repo permissions
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+          # Git author info
+          commit_owner: github-actions
+          commit_email: github-actions@github.com
+
+          # Install command for your formula
+          install: |
+            system "go", "build", "-o", "brewtagger"
+            bin.install "brewtagger"
+            prefix.install "com.github.dewey.brewtagger.plist"
+
+          # Test command for your formula
+          test: 'assert_match("brewtagger version", shell_output("brewtagger --version"))'
+
+          # Dependencies
+          depends_on: |
+            "go" => :build
+            "tag"
+
+          # Debug mode for first run
+          debug: true
+          skip_commit: true 

@@ -5,8 +5,8 @@
 class Brewtagger < Formula
   desc "Tag casks with a color in /applications so we know they are homebrew managed"
   homepage "https://github.com/dewey/brewtagger"
-  url "https://github.com/dewey/brewtagger/archive/refs/tags/v0.2.0.tar.gz"
-  sha256 "8aa81f57470889d26033bdab493169af1b2c2cadf08d4aa11cd120a42330df4f"
+  url "https://github.com/dewey/brewtagger/archive/refs/tags/v0.3.0.tar.gz"
+  sha256 "e8dd9e460fbe2d8ad11cc99fef5594d27eb0bc5b4f5b6b3d68ca3ea42f62694b"
 
   depends_on "go" => :build
   depends_on "tag"

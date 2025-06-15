@@ -16,6 +16,7 @@ const (
 	TagBin          = "/opt/homebrew/bin/tag"
 	DefaultTagColor = "Yellow"
 	ApplicationsDir = "/Applications"
+	Version         = "0.1.0"
 )
 
 type CaskInfo struct {
@@ -93,6 +94,8 @@ func printUsage() {
 	fmt.Fprintf(os.Stderr, "\nFlags:\n")
 	fmt.Fprintf(os.Stderr, "  -tag-color string\n")
 	fmt.Fprintf(os.Stderr, "        Color to use for tagging Homebrew cask apps (default \"%s\")\n", DefaultTagColor)
+	fmt.Fprintf(os.Stderr, "  -version\n")
+	fmt.Fprintf(os.Stderr, "        Print version information\n")
 	fmt.Fprintf(os.Stderr, "\nExamples:\n")
 	fmt.Fprintf(os.Stderr, "  %s                    # Tag apps with default color (Yellow)\n", os.Args[0])
 	fmt.Fprintf(os.Stderr, "  %s -tag-color=Blue    # Tag apps with Blue color\n", os.Args[0])
@@ -109,8 +112,14 @@ func main() {
 
 	// Parse command line flags
 	tagColor := flag.String("tag-color", DefaultTagColor, "Color to use for tagging Homebrew cask apps")
+	showVersion := flag.Bool("version", false, "Print version information")
 	flag.Usage = printUsage
 	flag.Parse()
+
+	if *showVersion {
+		fmt.Printf("brewtagger version %s\n", Version)
+		os.Exit(0)
+	}
 
 	slog.Info("Starting app tagging", "color", *tagColor)
 

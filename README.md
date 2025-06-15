@@ -15,15 +15,15 @@ A simple tool that automatically tags Homebrew Cask applications in your `/Appli
 brew install tag
 ```
 
-2. Build the tool:
+2. Install brewtagger:
 ```bash
-go build -o brewtagger
+brew install dewey/brewtagger/brewtagger
 ```
 
-3. Move the binary to a suitable location:
-```bash
-sudo mv brewtagger /usr/local/bin/
-```
+This will:
+- Install the binary
+- Set up the launchd service to run at login
+- Configure it to watch for new applications
 
 ## Usage
 
@@ -45,43 +45,23 @@ The tool supports all colors that the `tag` command-line tool supports. Common c
 - Orange
 - Gray
 
-## Automatic Tagging with launchd
+## Automatic Tagging
 
-To automatically tag apps when they're installed or when you log in, you can use launchd:
-
-1. Create the launchd plist file:
-```bash
-mkdir -p ~/Library/LaunchAgents
-cp com.github.dewey.brewtagger.plist ~/Library/LaunchAgents/
-```
-
-2. Edit the plist file to point to your binary location:
-```bash
-sed -i '' "s|/path/to/brewtagger|/usr/local/bin/brewtagger|g" ~/Library/LaunchAgents/com.github.dewey.brewtagger.plist
-```
-
-3. Load the launchd job:
-```bash
-launchctl load ~/Library/LaunchAgents/com.github.dewey.brewtagger.plist
-```
-
-The tool will now run:
+The tool will automatically run:
 - When you log in
 - Every 6 hours
 - When you install new Homebrew Cask applications
 
 ## Uninstallation
 
-1. Unload the launchd job:
 ```bash
-launchctl unload ~/Library/LaunchAgents/com.github.dewey.brewtagger.plist
+brew uninstall brewtagger
 ```
 
-2. Remove the files:
-```bash
-rm ~/Library/LaunchAgents/com.github.dewey.brewtagger.plist
-sudo rm /usr/local/bin/brewtagger
-```
+This will:
+- Unload the launchd service
+- Remove the plist file
+- Remove the binary
 
 ## License
 

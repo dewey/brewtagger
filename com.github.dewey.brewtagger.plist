@@ -6,7 +6,7 @@
     <string>com.github.dewey.brewtagger</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/Users/philipp/Projects/repos/github.com/dewey/brewtagger/brewtagger</string>
+        <string>HOMEBREW_PREFIX/bin/brewtagger</string>
     </array>
     <key>RunAtLoad</key>
     <true/>
@@ -20,5 +20,10 @@
     <array>
         <string>/Applications</string>
     </array>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>HOMEBREW_PREFIX</key>
+        <string>/opt/homebrew</string>
+    </dict>
 </dict>
 </plist> 

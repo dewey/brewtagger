@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     name: homebrew-releaser
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Release project to Homebrew
         uses: Justintime50/homebrew-releaser@v2
         with:
